@@ -1,0 +1,14 @@
+@if(userService.recentSearches().length > 0) {
+<h5>Busquedas recientes:</h5>
+<ul>
+  @for (recentSearch of userService.recentSearches(); track $index) {
+  <li
+    style="cursor: pointer"
+    aria-label="Buscar {{ recentSearch }}"
+    (click)="onRecentClick(recentSearch)"
+  >
+    {{ recentSearch }}
+  </li>
+  }
+</ul>
+}

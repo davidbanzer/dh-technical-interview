@@ -1,0 +1,23 @@
+@if (userService.isLoading()) {
+<p class="text-center" aria-live="polite">Cargando usuario...</p>
+} @else { @if (userService.selectedUser()) {
+<div class="card mx-auto" style="max-width: 500px" aria-label="Detalle de usuario">
+  <div class="card-body">
+    <h2 class="card-title">{{ userService.selectedUser()?.name }}</h2>
+    <p><strong>Email:</strong> {{ userService.selectedUser()?.email }}</p>
+    <p><strong>Género:</strong> {{ userService.selectedUser()?.gender }}</p>
+    <p>
+      <span
+        class="badge rounded-pill text-uppercase px-3 py-2"
+        [class.bg-success]="userService.selectedUser()?.status === 'active'"
+        [class.bg-danger]="userService.selectedUser()?.status === 'inactive'"
+        aria-label="Estado: {{ userService.selectedUser()?.status }}"
+      >
+        {{ userService.selectedUser()?.status }}
+      </span>
+    </p>
+  </div>
+</div>
+} @else {
+<p class="text-center" aria-live="polite">Usuario no encontrado</p>
+} }

@@ -1,0 +1,14 @@
+<div class="container p-3">
+  <form class="mb-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="d-flex gap-2">
+      <input type="text" placeholder="Buscar" class="form-control" formControlName="search" />
+      <button class="btn btn-primary" type="submit">Buscar</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="clearFilters()">
+        Limpiar
+      </button>
+    </div>
+  </form>
+
+  <recent-searches (selectSearch)="onRecentSearch($event)" />
+  <user-list />
+</div>
